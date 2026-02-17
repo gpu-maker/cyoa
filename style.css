@@ -1,61 +1,169 @@
+:root {
+  color-scheme: dark;
+  --bg: #07090f;
+  --panel: #121723;
+  --line: #2e3d56;
+  --accent: #70c3ff;
+  --danger: #ff5572;
+  --safe: #66db95;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  background: radial-gradient(circle at top, #222 0%, #000 70%);
-  color: #eee;
-  font-family: "Georgia", serif;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at top, #141b2b, var(--bg) 60%);
+  color: #e7eef9;
 }
 
-#game {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px;
-  background: rgba(20, 20, 20, 0.85);
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-#story {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  margin-bottom: 25px;
+h1, h2 {
+  margin: 0;
 }
 
-#choices button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  background: #333;
-  border: 1px solid #555;
-  color: #eee;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-#choices button:hover {
-  background: #555;
-  transform: translateY(-2px);
-}
-
-#inventory {
-  margin-top: 30px;
-  border-top: 1px solid #444;
-  padding-top: 15px;
-}
-
-#inventory h3 {
-  margin-bottom: 10px;
-}
-
-#inventory-list li {
+.status-row {
+  display: flex;
+  gap: 1rem;
   font-size: 0.95rem;
-  color: #ccc;
+  color: #b8c8e7;
+}
+
+.hud-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1rem;
+}
+
+.panel {
+  background: linear-gradient(145deg, #171f2f, var(--panel));
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem;
+}
+
+.location-panel, .activity-panel {
+  grid-column: span 1;
+}
+
+.house-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.room-cell {
+  min-height: 68px;
+  border: 1px solid #3a4b68;
+  border-radius: 8px;
+  background: #20314c;
+  color: #d8e8ff;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.room-cell.player-room {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.room-cell.ghost-room {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 1px var(--danger);
+}
+
+.room-cell.safe-room {
+  background: #1b3d34;
+}
+
+.room-cell.lights-off {
+  opacity: 0.55;
+}
+
+.tool-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.tool-card {
+  border: 1px solid #3a4b68;
+  border-radius: 8px;
+  padding: 0.6rem;
+  background: #18263d;
+}
+
+.tool-card p {
+  margin: 0.35rem 0 0;
+  color: #adc3e5;
+  font-size: 0.85rem;
+}
+
+.tool-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+button {
+  background: #243550;
+  color: #eef5ff;
+  border: 1px solid #446188;
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2d4567;
+}
+
+.evidence-checklist {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.found-evidence {
+  color: var(--safe);
+  font-weight: 600;
+}
+
+.small-text {
+  color: #b4c4dd;
+  font-size: 0.9rem;
+}
+
+.log-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.45rem;
+  max-height: 280px;
+  overflow: auto;
+  color: #c6d4ec;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .hud-grid {
+    grid-template-columns: 1fr;
+  }
 }
