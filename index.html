@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Last Night in Hollow Creek</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Watch: Ghost Investigation</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="game">
-    <h1>The Last Night in Hollow Creek</h1>
-    <div id="story"></div>
-    <div id="choices"></div>
-    <div id="inventory">
-      <h3>Inventory</h3>
-      <ul id="inventory-list"></ul>
-    </div>
-  </div>
+  <main class="app">
+    <header class="topbar">
+      <h1>Night Watch: Ghost Investigation</h1>
+      <div class="status-row">
+        <span id="phaseLabel">Phase: Briefing</span>
+        <span id="timerLabel">Time: 00:00</span>
+        <span id="sanityLabel">Sanity: 100%</span>
+      </div>
+    </header>
 
-  <script src="script.js"></script>
+    <section class="hud-grid">
+      <article class="panel location-panel">
+        <h2>Location Map</h2>
+        <div id="houseGrid" class="house-grid" aria-label="House room grid"></div>
+        <p id="roomInfo" class="small-text"></p>
+      </article>
+
+      <article class="panel tools-panel">
+        <h2>Investigation Devices</h2>
+        <div class="tool-list" id="toolList"></div>
+        <div class="tool-actions">
+          <button id="scanBtn">Scan Room</button>
+          <button id="listenBtn">Use Spirit Box</button>
+          <button id="moveBtn">Move Randomly</button>
+        </div>
+      </article>
+
+      <article class="panel journal-panel">
+        <h2>Evidence Journal</h2>
+        <div id="evidenceChecklist" class="evidence-checklist"></div>
+        <p id="ghostGuessLabel" class="small-text">Likely ghosts: Unknown</p>
+        <div class="tool-actions">
+          <button id="identifyBtn">Identify Ghost</button>
+          <button id="escapeBtn">Escape Van</button>
+        </div>
+      </article>
+
+      <article class="panel activity-panel">
+        <h2>Activity Log</h2>
+        <ul id="logList" class="log-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="js/game.js"></script>
 </body>
 </html>
